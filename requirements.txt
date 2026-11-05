@@ -1,0 +1,14 @@
+# Install torch (CPU build) first:
+#   pip install torch --index-url https://download.pytorch.org/whl/cpu
+transformers>=4.56
+peft>=0.13
+psutil>=5.9
+PyYAML>=6.0
+pandas>=2.0
+matplotlib>=3.7
+wandb>=0.17
+huggingface_hub>=0.24
+pytest>=8.0
+# optional: used only if you load Hub corpora yourself; the core pipeline reads data/raw with the stdlib
+datasets>=2.19
+jupyter>=1.0

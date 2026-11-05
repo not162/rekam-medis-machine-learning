@@ -1,0 +1,60 @@
+# CPU-only LoRA fine-tuning / scaling-law study. Target: ThinkPad T470s (i5-6300U, 8 GB RAM).
+# These are initial experimental settings, not tuned optima.
+project: cpu-llm-research
+seed: 42
+
+hardware:
+  device: cpu                # cpu | cuda | auto (Colab T4: pass --set hardware.device=cuda)
+  num_threads: 2             # torch intra-op threads (start conservative)
+  max_train_ram_gb: 4.0      # ceiling for this process (RSS)
+  min_available_ram_gb: 0.6  # preflight + runtime guard: stop if system RAM available drops below this
+  min_free_disk_gb: 3.0
+  sample_interval_s: 1.0
+
+model:
+  name: distilgpt2           # ~82M parameters, Apache-2.0
+  max_params_millions: 100   # reject anything larger (e.g. gpt2 124M)
+  local_files_only: false
+
+data:
+  source: synthetic          # "synthetic" or a file/dir under data/raw (.txt/.jsonl/.csv)
+  n_records: 600             # synthetic only
+  val_fraction: 0.15
+  max_seq_len: 128
+  repeat: 1                  # training-set repetition factor (Experiment C)
+  scrub_pii: true
+
+lora:
+  r: 8
+  alpha: 16
+  dropout: 0.05
+
+train:
+  batch_size: 1
+  grad_accum: 4
+  epochs: 1
+  learning_rate: 1.0e-4
+  weight_decay: 0.01
+  max_grad_norm: 1.0
+  warmup_ratio: 0.05
+  min_lr_ratio: 0.1
+  max_steps: null            # optional cap on optimizer steps
+  eval_every_steps: 25
+  checkpoint_every_steps: 25
+  eval_batch_size: 4
+  max_eval_blocks: 64        # cap on validation blocks per evaluation
+  eval_train_blocks: 32      # fixed training subset re-evaluated in eval mode
+
+wandb:
+  mode: auto                 # auto | online | offline | disabled
+  project: cpu-llm-research
+  entity: null
+
+experiments:
+  seeds: [42]
+  A_models: [EleutherAI/pythia-14m, EleutherAI/pythia-31m, EleutherAI/pythia-70m, distilgpt2]
+  B_weight_decay: [0.01, 0.05, 0.1]
+  C_repeats: [1, 2, 4]
+  D_learning_rates: [5.0e-5, 1.0e-4, 2.0e-4]
+  E_lora_ranks: [4, 8, 16]
+  pilot_records: 120
