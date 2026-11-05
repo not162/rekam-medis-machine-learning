@@ -1,0 +1,19 @@
+{
+  "timestamp": "2026-11-05T09:38:30.877563+00:00",
+  "os": "Windows-10-10.0.19045-SP0",
+  "cpu_model": "Intel(R) Core(TM) i5-6300U CPU @ 2.40GHz",
+  "physical_cores": 2,
+  "logical_cores": 4,
+  "cpu_freq_mhz": 2396,
+  "ram_total_gb": 7.65,
+  "ram_available_gb": 0.97,
+  "ram_percent_used": 87.3,
+  "disk_free_gb": 23.51,
+  "disk_total_gb": 237.91,
+  "python": "3.13.7",
+  "process_rss_mb": 21.7,
+  "torch_version": "2.11.0+cpu",
+  "torch_threads": 2,
+  "cuda_available": false,
+  "notes": []
+}

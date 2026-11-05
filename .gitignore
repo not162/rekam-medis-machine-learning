@@ -4,14 +4,9 @@ __pycache__/
 .pytest_cache/
 .ipynb_checkpoints/
 wandb/
-# generated artefacts
-checkpoints/*
-experiments/*
-models/adapters/*
-data/processed/*
-reports/*
-# never commit real patient records
-data/raw/*
-!*/.gitkeep
-!data/raw/.gitkeep
 colab_upload.zip
+# results (experiments, checkpoints, reports, adapters, processed data) are tracked.
+# never commit real patient records: only the synthetic file is allowed in data/raw
+data/raw/*
+!data/raw/.gitkeep
+!data/raw/synthetic_rekam_medis.jsonl

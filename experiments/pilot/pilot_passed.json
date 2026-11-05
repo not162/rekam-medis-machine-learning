@@ -1,0 +1,13 @@
+{
+  "checks": {
+    "completed": true,
+    "resumed_from_step_8": true,
+    "finite_losses": true,
+    "ram_within_budget": true,
+    "adapter_saved": true
+  },
+  "mean_s_per_step": 7.38,
+  "peak_rss_mb": 1249.3,
+  "model": "distilgpt2",
+  "grad_accum": 4
+}

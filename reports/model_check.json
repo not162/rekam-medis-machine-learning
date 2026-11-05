@@ -1,0 +1,116 @@
+{
+  "models": {
+    "distilgpt2": {
+      "verify": {
+        "name": "distilgpt2",
+        "registry_license": "apache-2.0",
+        "hub": {
+          "reachable": true,
+          "license": [
+            "apache-2.0"
+          ],
+          "gated": false,
+          "private": false
+        }
+      },
+      "config_estimate": {
+        "params": 81912576,
+        "estimate": {
+          "weights_gb": 0.305,
+          "optimizer_gb": 0.003,
+          "activations_gb": 0.051,
+          "logits_gb": 0.072,
+          "runtime_overhead_gb": 0.5,
+          "total_gb": 0.931
+        },
+        "within_budget": true,
+        "reject_reasons": []
+      },
+      "tokenizer": {
+        "vocab_size_tokenizer": 50257,
+        "vocab_size_model": 50257,
+        "compatible": true,
+        "eos_token_id": 50256,
+        "sample_tokens": 22
+      },
+      "params_base": {
+        "total": 81912576,
+        "trainable": 81912576,
+        "frozen_base": 0,
+        "trainable_pct_of_base": null,
+        "trainable_pct_of_total": 100.0
+      },
+      "params_lora": {
+        "total": 82060032,
+        "trainable": 147456,
+        "frozen_base": 81912576,
+        "trainable_pct_of_base": 0.18,
+        "trainable_pct_of_total": 0.1797
+      },
+      "smoke_test": {
+        "loss": 12.8887,
+        "finite": true,
+        "lora_grads_present": true,
+        "fwd_bwd_seconds": 1.213,
+        "rss_delta_mb": 132.0,
+        "ok": true
+      }
+    },
+    "EleutherAI/pythia-70m": {
+      "verify": {
+        "name": "EleutherAI/pythia-70m",
+        "registry_license": "apache-2.0",
+        "hub": {
+          "reachable": true,
+          "license": [
+            "apache-2.0"
+          ],
+          "gated": false,
+          "private": false
+        }
+      },
+      "config_estimate": {
+        "params": 70426624,
+        "estimate": {
+          "weights_gb": 0.262,
+          "optimizer_gb": 0.002,
+          "activations_gb": 0.034,
+          "logits_gb": 0.072,
+          "runtime_overhead_gb": 0.5,
+          "total_gb": 0.87
+        },
+        "within_budget": true,
+        "reject_reasons": []
+      },
+      "tokenizer": {
+        "vocab_size_tokenizer": 50277,
+        "vocab_size_model": 50304,
+        "compatible": true,
+        "eos_token_id": 0,
+        "sample_tokens": 22
+      },
+      "params_base": {
+        "total": 70426624,
+        "trainable": 70426624,
+        "frozen_base": 0,
+        "trainable_pct_of_base": null,
+        "trainable_pct_of_total": 100.0
+      },
+      "params_lora": {
+        "total": 70524928,
+        "trainable": 98304,
+        "frozen_base": 70426624,
+        "trainable_pct_of_base": 0.1396,
+        "trainable_pct_of_total": 0.1394
+      },
+      "smoke_test": {
+        "loss": 25.1842,
+        "finite": true,
+        "lora_grads_present": true,
+        "fwd_bwd_seconds": 0.45,
+        "rss_delta_mb": 22.1,
+        "ok": true
+      }
+    }
+  }
+}
